@@ -60,6 +60,7 @@ void textPlayers()
 
 int main()
 {
+    int i;
     /* initialize random seed: */
     srand(time(NULL));
     
@@ -72,7 +73,8 @@ int main()
     //system("cls");
     textColor();
 
-    cout << rand() % 10 + 1;
+    i = rand() % 15;
+    cout << Kolo[i];
 
     gracze[0].imie = "Monika";
     gracze[1].imie = "Jan";
