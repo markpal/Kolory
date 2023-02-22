@@ -79,5 +79,6 @@ int main()
     gracze[2].imie = "Franek";
 
     textPlayers();
+    Beep(523, 500);
 }
 
