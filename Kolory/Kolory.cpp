@@ -4,7 +4,7 @@
 #include <iostream>
 #include <conio.h>
 #include <Windows.h>
-#include <stdlib.h>     /* srand, rand */
+#include <stdlib.h>     /* srand, rand */ 
 #include <time.h>       /* time */
 
 using namespace std;
