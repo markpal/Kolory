@@ -41,6 +41,10 @@ void textColor(char c = 'W')
         break;
     case 'P': 
         colors = FOREGROUND_RED | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE;
+        break;
+    default:
+        colors = 33;
+        break;
     }
 
     SetConsoleTextAttribute(hStdOut, colors);
