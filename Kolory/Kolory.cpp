@@ -4,7 +4,7 @@
 #include <iostream>
 #include <conio.h>
 #include <Windows.h>
-#include <stdlib.h>     /* srand, rand */ 
+#include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
 using namespace std;
@@ -64,6 +64,55 @@ void textPlayers()
 
 int main()
 {
+    int i;
+
+    string haslo = "wielka antarktyda";
+    char literka;
+    int n = haslo.size();
+    int maska[100];
+    int suma = 0;
+
+    for (i = 0; i < n; i++)
+    {
+        if (haslo[i] == ' ')
+            maska[i] = 0;
+        else
+            maska[i] = 1;
+    }
+
+    do
+    {
+        cout << "Podaj litere" << endl;
+        cin >> literka;
+
+        for (i = 0; i < n; i++)
+        {
+            if (haslo[i] == literka)
+                maska[i] = 0;
+        }
+
+        textColor('P');
+        for (i = 0; i < n; i++)
+        {
+
+            if (maska[i] == 1)
+                cout << ".";
+            else
+                cout << haslo[i];
+        }
+        textColor();
+        cout << endl;
+
+        suma = 0;
+
+        for (i = 0; i < n; i++)
+        {
+            suma += maska[i];
+        }
+
+    } while (suma);
+    cout << "BRAWO!";
+    exit(0);
     /* initialize random seed: */
     srand(time(NULL));
 
