@@ -91,6 +91,18 @@ int main()
             maska[i] = 1;
     }
 
+    textColor('P');
+    for (i = 0; i < n; i++)
+    {
+        if (maska[i] == 1)
+            cout << ".";
+        else
+            cout << haslo[i];
+    }
+    textColor('Z');
+    cout << endl;
+
+
     do
     {
         cout << "Podaj litere" << endl;
