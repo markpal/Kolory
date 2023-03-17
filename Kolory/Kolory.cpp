@@ -54,11 +54,20 @@ void textColor(char c = 'W')
 void textPlayers()
 {
     int i;
-    textColor();
-    cout << "\n";
+    textColor('O');
+    std::cout << "\n";
     for (i = 0; i < 3; i++)
         cout << gracze[i].imie << "\t" << gracze[i].kasa << "\n";
     cout << "\n";
+}
+
+int jestSamogloska(char c)
+{
+    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y')
+        return 1;
+    else
+        return 0;
+
 }
 
 
@@ -71,6 +80,7 @@ int main()
     int n = haslo.size();
     int maska[100];
     int suma = 0;
+    int zgadl = 0;
 
     for (i = 0; i < n; i++)
     {
@@ -84,12 +94,24 @@ int main()
     {
         cout << "Podaj litere" << endl;
         cin >> literka;
+        zgadl = 0;
+
+        if (jestSamogloska(literka))
+            cout << "samogloska";
+        else
+            cout << "spolgloska";
+        cout << endl;
 
         for (i = 0; i < n; i++)
         {
-            if (haslo[i] == literka)
+            if ((haslo[i] == literka) && (maska[i]==1)) {
                 maska[i] = 0;
+                zgadl = 1;
+            }
         }
+
+        if (zgadl) cout << "OK"; else cout << "Zle!";
+        cout << endl;
 
         textColor('P');
         for (i = 0; i < n; i++)
@@ -100,7 +122,7 @@ int main()
             else
                 cout << haslo[i];
         }
-        textColor();
+        textColor('Z');
         cout << endl;
 
         suma = 0;
