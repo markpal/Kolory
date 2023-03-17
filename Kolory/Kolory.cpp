@@ -12,6 +12,7 @@ using namespace std;
 struct Gracz {
     string imie;
     int kasa = 0;
+    int portfel = 0; //kasa z wygranych rund
 };
 
 struct Gracz gracze[3];
