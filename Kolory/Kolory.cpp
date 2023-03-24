@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include <string>  
 
 using namespace std;
 
@@ -16,6 +17,8 @@ struct Gracz {
 };
 
 struct Gracz gracze[3];
+
+int kolejka = 0;
 
 int Kolo[] = { -1, 0, 100, 200, 100, 200, 100, 200, 500, 500, 1000, 1000, 1500, 2000, 3000, 5000 };
 // -1 bankrut
@@ -82,6 +85,13 @@ int main()
     int maska[100];
     int suma = 0;
     int zgadl = 0;
+    int sa_spolgloski = 0;
+    srand(time(NULL));
+    string rezultat;
+
+    gracze[0].imie = "Zenon";
+    gracze[1].imie = "Maryla";
+    gracze[2].imie = "Xavier";
 
     for (i = 0; i < n; i++)
     {
@@ -105,7 +115,33 @@ int main()
 
     do
     {
-        cout << "Podaj litere" << endl;
+        sa_spolgloski = 0;
+        for(i=0; i<n; i++)
+            if ((!jestSamogloska(haslo[i])) && (maska[i]))
+            {
+                sa_spolgloski = 1;
+                break;
+            }
+
+        if (sa_spolgloski)
+            cout << " -- Spolgloski sa --" << endl;
+         
+        rezultat = "";
+        i = rand() % 15;
+        if (Kolo[i] == 0)
+            rezultat = "Strata kolejki";
+        if (Kolo[i] == -1)
+            rezultat = "Bankrut";
+        if (rezultat != "")
+           cout << "\033[1;34m" << rezultat << "\033[0m" << endl;
+        else
+            cout << "\033[1;34m" << Kolo[i] << "\033[0m" << endl;
+
+
+
+
+
+        cout << gracze[kolejka].imie <<  ": Podaj litere" << endl;
         cin >> literka;
         zgadl = 0;
 
@@ -123,7 +159,16 @@ int main()
             }
         }
 
-        if (zgadl) cout << "OK"; else cout << "Zle!";
+        if (zgadl) cout << "OK"; 
+        else {
+            cout << "Zle!";
+            // strata kolejki
+            kolejka = (kolejka + 1) % 3;
+        }
+
+        
+
+
         cout << endl;
 
         textColor('P');
@@ -160,12 +205,9 @@ int main()
     //system("cls");
     textColor();
 
-    i = rand() % 15;
-    cout << Kolo[i];
 
-    gracze[0].imie = "Monika";
-    gracze[1].imie = "Jan";
-    gracze[2].imie = "Franek";
+
+
 
     textPlayers();
     Beep(523, 500);
