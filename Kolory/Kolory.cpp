@@ -137,6 +137,17 @@ int main()
         else
             cout << "\033[1;34m" << Kolo[i] << "\033[0m" << endl;
 
+        // Strata kolejki i bankrut
+        if ((Kolo[i] == 0) || (Kolo[i] == -1))
+        {
+            if (Kolo[i] == -1) // bankrut
+                gracze[kolejka].kasa = 0;
+            
+            kolejka = (kolejka + 1) % 3;
+            continue;
+
+        }
+
 
 
 
