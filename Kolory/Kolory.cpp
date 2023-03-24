@@ -86,6 +86,7 @@ int main()
     int suma = 0;
     int zgadl = 0;
     int sa_spolgloski = 0;
+    int kwota = 0;
     srand(time(NULL));
     string rezultat;
 
@@ -116,6 +117,8 @@ int main()
     do
     {
         sa_spolgloski = 0;
+        kwota = 0;
+
         for(i=0; i<n; i++)
             if ((!jestSamogloska(haslo[i])) && (maska[i]))
             {
@@ -136,9 +139,12 @@ int main()
         if (Kolo[i] == -1)
             rezultat = "Bankrut";
         if (rezultat != "")
-           cout << "\033[1;34m" << rezultat << "\033[0m" << endl;
+           cout << "\033[1;31m" << rezultat << "\033[0m" << endl;
         else
+        {
             cout << "\033[1;34m" << Kolo[i] << "\033[0m" << endl;
+            kwota = Kolo[i];
+        }
 
         // Strata kolejki i bankrut
         if ((Kolo[i] == 0) || (Kolo[i] == -1))
@@ -178,7 +184,10 @@ int main()
         if (zgadl)
         {
             cout << "OK";
-            gracze[kolejka].kasa += Kolo[i] * zgadl;
+            gracze[kolejka].kasa += kwota * zgadl;
+
+            cout << endl << gracze[kolejka].imie << "\033[1;32m " << gracze[kolejka].kasa << "\033[0m";
+
 
         }
         else {
