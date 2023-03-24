@@ -126,6 +126,9 @@ int main()
         if (sa_spolgloski)
             cout << " -- Spolgloski sa --" << endl;
          
+
+        cout << gracze[kolejka].imie << " ";
+
         rezultat = "";
         i = rand() % 15;
         if (Kolo[i] == 0)
@@ -168,11 +171,16 @@ int main()
         {
             if ((haslo[i] == literka) && (maska[i]==1)) {
                 maska[i] = 0;
-                zgadl = 1;
+                zgadl++;
             }
         }
 
-        if (zgadl) cout << "OK"; 
+        if (zgadl)
+        {
+            cout << "OK";
+            gracze[kolejka].kasa += Kolo[i] * zgadl;
+
+        }
         else {
             cout << "Zle!";
             // strata kolejki
