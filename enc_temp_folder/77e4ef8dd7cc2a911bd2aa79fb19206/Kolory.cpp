@@ -209,6 +209,21 @@ int main()
     } while (suma);
     cout << "BRAWO!";
     exit(0);
+    /* initialize random seed: */
+    srand(time(NULL));
+
+    textColor('P');
+
+    //char rainbow[] = { 'R','G','Y','B'};
+
+    cout << "He..o Wo..d!\n";
+
+    //system("cls");
+    textColor();
+
+
+
+
 
     textPlayers();
     Beep(523, 500);
