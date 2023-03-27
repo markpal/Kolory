@@ -74,6 +74,21 @@ int jestSamogloska(char c)
 
 }
 
+char WczytajZnak()
+{
+    string letter;
+    cin >> letter;
+
+    while (letter.length() != 1)
+    {
+        cout << endl << "Type a single letter and press <enter>: ";
+        cin >> letter;
+    }
+
+    return letter[0];
+
+}
+
 
 int main()
 {
@@ -92,9 +107,9 @@ int main()
     srand(time(NULL));
     string rezultat;
 
-    gracze[0].imie = "Zenon";
-    gracze[1].imie = "Maryla";
-    gracze[2].imie = "Xavier";
+    gracze[0].imie = "Bryan";
+    gracze[1].imie = "Jessica";
+    gracze[2].imie = "Nepomucen";
 
     for (i = 0; i < n; i++)
     {
@@ -137,12 +152,14 @@ int main()
         cout << "1. zgaduj haslo" << endl;
         cout << "2. krecenie kolem" << endl;
 
+        // TODO tylko 1 i 2, nie mozna wprowadzac liter
+
         cin >> wybor;
 
         if (wybor == 1)
         {
             cout << "Podaj haslo" << endl;
-            std::getline(std::cin >> std::ws, proba);
+            getline(cin >> ws, proba);  // wczytanie z klawiatury string z uwzgl. whitespa
             if (haslo == proba) {
                 cout << endl << " !!!!!!!!!! =======   WYGRANA ========== !!!!!!!!!!!!!" << endl;
                 gracze[kolejka].portfel += gracze[kolejka].kasa;
@@ -159,8 +176,7 @@ int main()
 
             }
 
-            cin.clear();
-            fflush(stdin);
+
 
         }
 
@@ -197,7 +213,15 @@ int main()
 
 
         cout << gracze[kolejka].imie <<  ": Podaj litere" << endl;
-        cin >> literka;
+
+        // Ocena 6 z aktywności
+        // TODO  wpisanie kilku liter zapetla program
+
+        //cin >> literka;
+
+        literka = WczytajZnak();
+ 
+
         zgadl = 0;
 
         if (jestSamogloska(literka))
