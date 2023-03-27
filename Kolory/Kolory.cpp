@@ -80,6 +80,7 @@ int main()
     int i;
 
     string haslo = "wielka antarktyda";
+    string proba;
     char literka;
     int n = haslo.size();
     int maska[100];
@@ -87,6 +88,7 @@ int main()
     int zgadl = 0;
     int sa_spolgloski = 0;
     int kwota = 0;
+    int wybor;
     srand(time(NULL));
     string rezultat;
 
@@ -130,7 +132,38 @@ int main()
             cout << " -- Spolgloski sa --" << endl;
          
 
-        cout << gracze[kolejka].imie << " ";
+        cout << gracze[kolejka].imie << " " << endl;
+
+        cout << "1. zgaduj haslo" << endl;
+        cout << "2. krecenie kolem" << endl;
+
+        cin >> wybor;
+
+        if (wybor == 1)
+        {
+            cout << "Podaj haslo" << endl;
+            std::getline(std::cin >> std::ws, proba);
+            if (haslo == proba) {
+                cout << endl << " !!!!!!!!!! =======   WYGRANA ========== !!!!!!!!!!!!!" << endl;
+                gracze[kolejka].portfel += gracze[kolejka].kasa;
+                break;
+            }
+            else
+            {
+                kolejka = (kolejka + 1) % 3;
+                suma = 1;
+                cout << endl << " !!!!!!!!!! =======   ZLE ========== !!!!!!!!!!!!!" << endl;
+                cout << endl << "=================================================" << endl;
+                continue;
+
+
+            }
+
+            cin.clear();
+            fflush(stdin);
+
+        }
+
 
         rezultat = "";
         i = rand() % 15;
