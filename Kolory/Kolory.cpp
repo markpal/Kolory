@@ -89,6 +89,21 @@ char WczytajZnak()
 
 }
 
+char WczytajWybor()
+{
+    char wybor;
+    wybor = WczytajZnak();
+
+    while (wybor != '1' && wybor != '2')
+    {
+        cout << endl << "Wybierz [1-2]: ";
+        cin >> wybor;
+    }
+
+    return wybor;
+
+}
+
 
 int main()
 {
@@ -103,7 +118,7 @@ int main()
     int zgadl = 0;
     int sa_spolgloski = 0;
     int kwota = 0;
-    int wybor;
+    char wybor;
     srand(time(NULL));
     string rezultat;
 
@@ -154,9 +169,9 @@ int main()
 
         // TODO tylko 1 i 2, nie mozna wprowadzac liter
 
-        cin >> wybor;
+        wybor = WczytajWybor();
 
-        if (wybor == 1)
+        if (wybor == '1')
         {
             cout << "Podaj haslo" << endl;
             getline(cin >> ws, proba);  // wczytanie z klawiatury string z uwzgl. whitespa
