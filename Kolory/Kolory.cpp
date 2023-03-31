@@ -7,6 +7,7 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 #include <string>  
+#include <fstream>
 
 using namespace std;
 
@@ -121,6 +122,22 @@ int main()
     char wybor;
     srand(time(NULL));
     string rezultat;
+
+    ifstream strum;
+    strum.open("dane.txt");
+
+    while (!strum.eof())
+    {
+        string s;
+        //strum >> s;
+        getline(strum, s);
+        cout << s << endl;
+    }
+
+    strum.close();
+
+
+    exit(0);
 
     gracze[0].imie = "Bryan";
     gracze[1].imie = "Jessica";

@@ -19,4 +19,9 @@
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="dane.txt">
+      <Filter>Pliki zasobów</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
