@@ -8,6 +8,7 @@
 #include <time.h>       /* time */
 #include <string>  
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -110,10 +111,10 @@ int main()
 {
     int i;
 
-    string haslo = "wielka antarktyda";
+    string haslo; // = "wielka antarktyda";
     string proba;
     char literka;
-    int n = haslo.size();
+    int n;
     int maska[100];
     int suma = 0;
     int zgadl = 0;
@@ -122,6 +123,8 @@ int main()
     char wybor;
     srand(time(NULL));
     string rezultat;
+    vector<string> hasla;
+    int j;
 
     ifstream strum;
     strum.open("dane.txt");
@@ -131,13 +134,29 @@ int main()
         string s;
         //strum >> s;
         getline(strum, s);
-        cout << s << endl;
+        //cout << s << endl;
+        hasla.push_back(s);
     }
 
     strum.close();
 
 
-    exit(0);
+    //for (i = 0; i < hasla.size(); i++)
+    //    cout << hasla[i] << endl;
+
+    for(string item : hasla)
+        cout << item << endl;
+
+    cout << endl << endl;
+
+    j = rand() % hasla.size(); // losujemy j-te haslo z przedzialu 0 ... size - 1
+    //cout << hasla[j];
+
+    haslo = hasla[j];
+    n = haslo.size();
+
+   //cout << haslo;
+    
 
     gracze[0].imie = "Bryan";
     gracze[1].imie = "Jessica";
