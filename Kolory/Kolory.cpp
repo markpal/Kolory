@@ -186,20 +186,25 @@ int main()
             maska[i] = 1;
     }
 
-    textColor('P');
-    for (i = 0; i < n; i++)
-    {
-        if (maska[i] == 1)
-            cout << ".";
-        else
-            cout << haslo[i];
-    }
-    textColor('Z');
-    cout << endl;
+
 
 
     do
     {
+        cout << "\033[2J";
+        textColor('P');
+        for (i = 0; i < n; i++)
+        {
+
+            if (maska[i] == 1)
+                cout << ".";
+            else
+                cout << haslo[i];
+        }
+        textColor('Z');
+        cout << endl;
+
+
         sa_spolgloski = 0;
         kwota = 0;
 
@@ -282,10 +287,7 @@ int main()
 
         cout << gracze[kolejka].imie <<  ": Podaj litere" << endl;
 
-        // Ocena 6 z aktywności
-        // TODO  wpisanie kilku liter zapetla program
 
-        //cin >> literka;
 
         literka = WczytajZnak();
  
@@ -329,17 +331,7 @@ int main()
 
         cout << endl;
 
-        textColor('P');
-        for (i = 0; i < n; i++)
-        {
 
-            if (maska[i] == 1)
-                cout << ".";
-            else
-                cout << haslo[i];
-        }
-        textColor('Z');
-        cout << endl;
 
         suma = 0;
 
@@ -347,6 +339,8 @@ int main()
         {
             suma += maska[i];
         }
+
+       
 
     } while (suma);
     cout << "BRAWO!";
