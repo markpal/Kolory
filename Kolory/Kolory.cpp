@@ -60,10 +60,15 @@ void textColor(char c = 'W')
 void textPlayers()
 {
     int i;
-    textColor('O');
     std::cout << "\n";
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < 3; i++) {
+        if (i == kolejka) {
+            cout << "\033[1;34m";
+        }
         cout << gracze[i].imie << "\t" << gracze[i].kasa << "\n";
+        cout << "\033[0m";
+
+    }
     cout << "\n";
 }
 
@@ -80,7 +85,7 @@ char WczytajZnak()
 {
     string letter;
     cin >> letter;
-
+    
     while (letter.length() != 1)
     {
         cout << endl << "Type a single letter and press <enter>: ";
@@ -136,18 +141,27 @@ int main()
         getline(strum, s);
         //cout << s << endl;
         hasla.push_back(s);
+
     }
 
     strum.close();
 
+    
 
-    //for (i = 0; i < hasla.size(); i++)
+
+   // for (i = 0; i < hasla.size(); i++)
     //    cout << hasla[i] << endl;
+
+    
 
     for(string item : hasla)
         cout << item << endl;
 
+    
+
     cout << endl << endl;
+    
+
 
     j = rand() % hasla.size(); // losujemy j-te haslo z przedzialu 0 ... size - 1
     //cout << hasla[j];
@@ -155,11 +169,13 @@ int main()
     haslo = hasla[j];
     n = haslo.size();
 
+
+
    //cout << haslo;
     
 
-    gracze[0].imie = "Bryan";
-    gracze[1].imie = "Jessica";
+    gracze[0].imie = "Bryanusz";
+    gracze[1].imie = "Jessica ";
     gracze[2].imie = "Nepomucen";
 
     for (i = 0; i < n; i++)
@@ -198,7 +214,8 @@ int main()
             cout << " -- Spolgloski sa --" << endl;
          
 
-        cout << gracze[kolejka].imie << " " << endl;
+        //cout << gracze[kolejka].imie << " " << endl;
+        textPlayers();
 
         cout << "1. zgaduj haslo" << endl;
         cout << "2. krecenie kolem" << endl;
