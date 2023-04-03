@@ -9,6 +9,7 @@
 #include <string>  
 #include <fstream>
 #include <vector>
+#include <cstring>
 
 using namespace std;
 
@@ -91,6 +92,9 @@ char WczytajZnak()
         cout << endl << "Type a single letter and press <enter>: ";
         cin >> letter;
     }
+
+    for (auto& c : letter)  // & zapamietuje modyfikacje w petli & - referencja
+        c = toupper(c);
 
     return letter[0];
 
@@ -233,6 +237,8 @@ int main()
         {
             cout << "Podaj haslo" << endl;
             getline(cin >> ws, proba);  // wczytanie z klawiatury string z uwzgl. whitespa
+            for (auto& c : proba)  // & zapamietuje modyfikacje w petli & - referencja
+                c = toupper(c);
             if (haslo == proba) {
                 cout << endl << " !!!!!!!!!! =======   WYGRANA ========== !!!!!!!!!!!!!" << endl;
                 gracze[kolejka].portfel += gracze[kolejka].kasa;
@@ -277,6 +283,10 @@ int main()
             kolejka = (kolejka + 1) % 3;
             suma = 1;
             cout << endl << "=================================================" << endl;
+
+            // TODO
+            // sleep for
+
             continue;
 
         }
