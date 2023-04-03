@@ -10,6 +10,7 @@
 #include <fstream>
 #include <vector>
 #include <cstring>
+#include <cassert>
 
 using namespace std;
 
@@ -75,7 +76,8 @@ void textPlayers()
 
 int jestSamogloska(char c)
 {
-    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y')
+    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y' ||
+        c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'Y')
         return 1;
     else
         return 0;
@@ -165,8 +167,8 @@ int main()
 
     cout << endl << endl;
     
-
-
+    hasla.clear();
+    assert(hasla.size() > 0);
     j = rand() % hasla.size(); // losujemy j-te haslo z przedzialu 0 ... size - 1
     //cout << hasla[j];
 
