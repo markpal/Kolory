@@ -167,7 +167,6 @@ int main()
 
     cout << endl << endl;
     
-    hasla.clear();
     assert(hasla.size() > 0);
     j = rand() % hasla.size(); // losujemy j-te haslo z przedzialu 0 ... size - 1
     //cout << hasla[j];
