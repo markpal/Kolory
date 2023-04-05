@@ -11,6 +11,7 @@
 #include <vector>
 #include <cstring>
 #include <cassert>
+#include <locale.h>
 
 using namespace std;
 
@@ -110,6 +111,8 @@ int main()
     ifstream strum;
     strum.open("dane.txt");
 
+    setlocale(LC_CTYPE, "Polish");
+
     while (!strum.eof())
     {
         string s;
@@ -143,11 +146,6 @@ int main()
 
     haslo = hasla[j];
     n = haslo.size();
-
-
-
-   //cout << haslo;
-    
 
     gracze[0].imie = "Bryanusz";
     gracze[1].imie = "Jessica ";
