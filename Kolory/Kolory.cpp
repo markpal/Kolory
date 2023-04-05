@@ -259,6 +259,7 @@ int main()
 
             // TODO
             // sleep for
+            // kupowanie samoglosek
 
             continue;
 
