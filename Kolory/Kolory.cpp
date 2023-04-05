@@ -29,36 +29,6 @@ int Kolo[] = { -1, 0, 100, 200, 100, 200, 100, 200, 500, 500, 1000, 1000, 1500, 
 // 0 strata kolejki
 
 
-void textColor(char c = 'W')
-{
-    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    auto colors = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE; //default white gray
-
-    switch (c) {
-    case 'Y':   //yellow
-        colors = FOREGROUND_RED | FOREGROUND_GREEN;
-        break;
-    case 'R':
-        colors = 12;
-        break;
-    case 'G':
-        colors = FOREGROUND_GREEN;
-        break;
-    case 'B':
-        colors = FOREGROUND_BLUE | FOREGROUND_GREEN;
-        break;
-    case 'P':
-        colors = FOREGROUND_RED | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE;
-        break;
-    default:
-        //colors = 22;
-        break;
-    }
-
-    SetConsoleTextAttribute(hStdOut, colors);
-
-}
-
 void textPlayers()
 {
     int i;
@@ -196,8 +166,9 @@ int main()
 
     do
     {
-        cout << "\033[2J";
-        textColor('P');
+       // cout << "\033[2J";
+
+        cout << "\033[47m" << "\033[31m";
         for (i = 0; i < n; i++)
         {
 
@@ -206,7 +177,8 @@ int main()
             else
                 cout << haslo[i];
         }
-        textColor('Z');
+
+        cout << "\033[0m";
         cout << endl;
 
 
