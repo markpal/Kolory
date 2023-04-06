@@ -15,6 +15,12 @@
 
 using namespace std;
 
+class Player {
+
+
+
+};
+
 struct Gracz {
     string imie;
     int kasa = 0;
@@ -166,7 +172,7 @@ int main()
     {
        // cout << "\033[2J";
 
-        cout << "\033[47m" << "\033[31m";
+        cout << "\033[1;47m" << "\033[31m";
         for (i = 0; i < n; i++)
         {
 
@@ -326,8 +332,6 @@ int main()
 
     } while (suma);
     cout << "BRAWO!";
-    exit(0);
 
-    textPlayers();
-    Beep(523, 500);
+    return 0;
 }
